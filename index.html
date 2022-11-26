@@ -8,12 +8,34 @@
     <!-- META -->
     <meta name="description" content="Pre-Entrega 1 para el curso JavaScript de la carrera Desarrollo Full Stack en CoderHouse.">
     <meta name="author" content="Martín Marron">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/0b51d3f359.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Currency converter <span class="spanHeader">to Argentine Pesos (ARS)</span></h1>
+        <nav class="menu">
+            <ul class="menu__social">
+                <li><a href="https://github.com/martin201285" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                <li class="social__items"><a href="https://twitter.com/brownofficial85" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <label class="container__text">Initialize</label>
+            <input type="button" value="Click here" id="conversorButton" onclick="conversor()">
+        </div>
+    </main>
+    <footer>
+        <p>Copyright © 2022 | All Rights Reserved</p>
+        <p>Designed by <span class="spanFooter">Martin Marron</span></p>        
+    </footer>
+
     <!-- JavaScript -->
     <script src="./js/index.js"></script>
+    
 </body>
 </html>

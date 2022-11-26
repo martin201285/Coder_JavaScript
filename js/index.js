@@ -1,13 +1,13 @@
 function conversor() {
 
-    let valor = parseInt(prompt("1) Ingrese un valor en pesos (ARS)."));
-    let moneda = prompt("2) Seleccione: USD para dólar, EUR para euro, GBP para libra, BRL para real.").toLowerCase();
+    const valor = parseInt(prompt("1) Ingrese un valor en pesos (ARS)."));
+    const moneda = prompt("2) Seleccione: USD para dólar, EUR para euro, GBP para libra, BRL para real.").toLowerCase();
 
     // Cotizaciones
-    let cotizacionUsd = 165.31; // Dólar
-    let cotizacionEur = 176.50; // Euro
-    let cotizacionGbp = 199.87; // Libra esterlina
-    let cotizacionBrl = 6.54; // Real
+    const cotizacionUsd = 165.31; // Dólar
+    const cotizacionEur = 176.50; // Euro
+    const cotizacionGbp = 199.87; // Libra esterlina
+    const cotizacionBrl = 6.54; // Real
 
     let resultado = 0;
 
@@ -28,5 +28,3 @@ function conversor() {
         
     }
 }
-
-conversor();
