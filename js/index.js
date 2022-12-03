@@ -28,3 +28,14 @@ function conversor() {
         
     }
 }
+
+// Ejemplo de prueba
+
+// const divisas = [
+//     { nombre: "Dólar USD", codigo: "USD", cotizacion: 165.31 },
+//     { nombre: "Euro", codigo: "EUR", cotizacion: 176.50 },
+//     { nombre: "Libra", codigo: "GBP", cotizacion: 199.87 },
+//     { nombre: "Real", codigo: "BRL", cotizacion: 6.54 },
+// ]
+
+

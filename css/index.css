@@ -14,6 +14,7 @@
 
     /* Font Sizes */
 
+    --font-xl: 3.2em;
     --font-lg: 2.8em;
     --font-md: 1.8em;
     --font-sm: 1.6em;
@@ -108,6 +109,10 @@ h1 {
 
 /* MAIN */
 
+main {
+   padding: 0 var(--spacing-lg);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -135,6 +140,90 @@ h1 {
 #conversorButton:hover {
     background: linear-gradient(180deg, #868686 0%, rgba(134, 134, 134, 0.44) 100%);
     cursor: pointer;
+}
+
+/* CONVERSOR */
+
+.conversor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.conversorBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    gap: var(--spacing-sm);
+    background-color: rgb(92, 92, 92);
+    border-radius: 1rem;
+    border: 4px ridge #9c9c9c;
+    padding: var(--spacing-md) 0 ;
+}
+
+.conversorBox__input {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+}
+
+#button {
+    position: absolute;
+    padding: 0.5rem;
+    right: 0;
+    top: 1.5rem;
+    touch-action: manipulation;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    color: black;
+    border: none;
+    font-size: var(--font-md);
+}
+
+.conversorBox__currency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+select, input {
+    width: 28rem;
+    font-size: var(--font-md);
+    border-radius: .5rem;
+}
+
+label {
+    font-size: var(--font-sm);
+}
+
+/* elimina arrows en input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    -moz-appearance: textfield;
+}
+
+.conversorBox__output {
+    font-size: var(--font-xl);
+    border-top: 4px ridge #9c9c9c;;
+    border-bottom: 4px ridge #9c9c9c;;
+    width: 27.5rem;
+    text-align: center;
+}
+
+.conversorBox__rate {
+    font-size: var(--font-md);
+    width: 27.5rem;
+    text-align: center;
 }
 
 /* FOOTER */

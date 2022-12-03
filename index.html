@@ -28,6 +28,64 @@
             <label class="container__text">Initialize</label>
             <input type="button" value="Click here" id="conversorButton" onclick="conversor()">
         </div>
+        <section class="conversor">
+            <div class="conversorBox">
+                <form class="conversorBox__input">
+                    <label for="input">Amount</label>
+                    <input type="number" maxlength="15" min="0" step="any" placeholder="Cantidad a convertir" aria-label="Cantidad a convertir"
+                    id="input" class="input">
+                    <button type="button" disabled="disabled" form="tmc" class="button" id="button" aria-label="Clear amount">x</button>
+                </form>
+                <form class="conversorBox__currency" action="#">
+                    <label for="currency">From Currency</label>
+                    <select name="currencyFrom" id="currencyFrom">
+                        <option value="ars">ARS - Peso argentino</option>
+                        <option value="brl">BRL - Real brasileño</option>
+                        <option value="cad">CAD - Dólar canadiense</option>
+                        <option value="chf">CHF - Franco suizo</option>
+                        <option value="clp">CLP - Peso chileno</option>
+                        <option value="cny">CHF - Yuan chino</option>
+                        <option value="cop">COP - Peso colombiano</option>
+                        <option value="eur">EUR - Euro</option>
+                        <option value="gbp">GBP - Libra esterlina</option>
+                        <option value="jpy">JPY - Yen japonés</option>
+                        <option value="mxn">MXN - Peso mexicano</option>
+                        <option value="pen">PEN - Sol perú</option>
+                        <option value="rub">RUB - Rublo ruso</option>
+                        <option value="usd">USD - Dólar estadounidense</option>   
+                        <option value="uyu">UYU - Peso uruguayo</option>   
+                        <option value="VES">JPY - Bolívar venezolano</option>        
+                    </select>
+                </form>
+                <form class="conversorBox__currency" action="#">
+                    <label for="currency">To Currency</label>
+                    <select name="currencyTo" id="currencyTo">
+                        <option value="ars">ARS - Peso argentino</option>
+                        <option value="brl">BRL - Real brasileño</option>
+                        <option value="cad">CAD - Dólar canadiense</option>
+                        <option value="chf">CHF - Franco suizo</option>
+                        <option value="clp">CLP - Peso chileno</option>
+                        <option value="cny">CHF - Yuan chino</option>
+                        <option value="cop">COP - Peso colombiano</option>
+                        <option value="eur">EUR - Euro</option>
+                        <option value="gbp">GBP - Libra esterlina</option>
+                        <option value="jpy">JPY - Yen japonés</option>
+                        <option value="mxn">MXN - Peso mexicano</option>
+                        <option value="pen">PEN - Sol perú</option>
+                        <option value="rub">RUB - Rublo ruso</option>
+                        <option value="usd">USD - Dólar estadounidense</option>   
+                        <option value="uyu">UYU - Peso uruguayo</option>   
+                        <option value="VES">JPY - Bolívar venezolano</option>                  
+                    </select>
+                </form>
+                <div class="conversorBox__rate">
+                    <p>1.00 ARS = 1.00 USD</p>
+                </div>
+                <div class="conversorBox__output">
+                    <p>$10.000</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <p>Copyright © 2022 | All Rights Reserved</p>
