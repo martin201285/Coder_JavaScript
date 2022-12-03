@@ -63,6 +63,9 @@ header {
     align-items: center;
     padding: 0 var(--spacing-lg) 0 var(--spacing-lg);
     background-color: var(--background-header-footer);
+    box-shadow: 0 0 12px 0 #00000070;
+    position: fixed;
+    width: 100vw;
 }
 
 h1 {
@@ -77,7 +80,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12.8rem;
+    gap: 2rem;
 }
 
 .menu a {
@@ -103,7 +106,16 @@ h1 {
     transform: scale(1.4);
 }
 
-.spanHeader {
+.menu__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu__items a:hover {
     color: rgb(228, 183, 35);
 }
 
@@ -119,7 +131,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-lg) 0 0 0;
 }
 
 .container__text {
@@ -157,7 +169,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30rem;
+    width: 33.2rem;
     gap: var(--spacing-sm);
     background-color: rgb(92, 92, 92);
     border-radius: 1rem;
@@ -214,8 +226,8 @@ input {
 
 .conversorBox__output {
     font-size: var(--font-xl);
-    border-top: 4px ridge #9c9c9c;;
-    border-bottom: 4px ridge #9c9c9c;;
+    border-top: 4px ridge #9c9c9c;
+    border-bottom: 4px ridge #9c9c9c;
     width: 27.5rem;
     text-align: center;
 }
@@ -224,6 +236,57 @@ input {
     font-size: var(--font-md);
     width: 27.5rem;
     text-align: center;
+}
+
+/* COTIZACIONES */
+
+.cotizaciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.cotizaciones__box {
+    background-color: rgb(92, 92, 92);
+    text-transform: uppercase;
+    padding: var(--spacing-xs);
+    border-radius: 1rem;
+    border: 4px ridge #9c9c9c;
+    
+}
+
+.cotizaciones__title {
+    font-size: var(--font-md);
+    border-bottom: 4px ridge #9c9c9c;
+    padding: 0 0 0.6rem 0;
+    margin: 0 1rem 0 1rem;
+}
+
+th {
+    padding: .6rem 1rem;
+    font-size: var(--font-sm);
+    text-align: left;
+}
+
+.tableFlag {
+    display: flex;
+    gap: .5rem;
+}
+
+td {
+    font-size: var(--font-xs);
+    padding: 0 1rem;
+    align-items: center;
+}
+
+.countryFlag {
+    width: 2rem;
+    height: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-width: 0;
 }
 
 /* FOOTER */
