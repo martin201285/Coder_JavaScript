@@ -222,6 +222,7 @@ input::-webkit-inner-spin-button {
 
 input {
     -moz-appearance: textfield;
+    padding-left: .5rem;
 }
 
 .conversorBox__output {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Entrega 1</title>
+    <title>Pre-Entrega 2</title>
     <!-- META -->
     <meta name="description" content="Pre-Entrega 1 para el curso JavaScript de la carrera Desarrollo Full Stack en CoderHouse.">
     <meta name="author" content="Martín Marron">
@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <h1>Currency converter</span></h1>
+        <h1>Conversor de Divisas</span></h1>
         <nav class="menu">
             <ul class="menu__items">
                 <li><a href="#conversor">Conversor</li>
@@ -36,13 +36,12 @@
         <section class="conversor" id="conversor">
             <div class="conversorBox">
                 <form class="conversorBox__input">
-                    <label for="input">Amount</label>
-                    <input type="number" maxlength="15" min="0" step="any" placeholder="Cantidad a convertir" aria-label="Cantidad a convertir"
-                    id="input" class="input">
-                    <button type="button" disabled="disabled" form="tmc" class="button" id="button" aria-label="Clear amount">x</button>
+                    <label for="input">Monto</label>
+                    <input type="number" min="0.00" max="100000000.00" step="0.01" placeholder="0,00" aria-label="Cantidad a convertir" id="input" class="input">
+                    <button type="button" class="button" id="button" aria-label="Clear amount" onclick="ClearAumont()">x</button>
                 </form>
                 <form class="conversorBox__currency" action="#">
-                    <label for="currency">From Currency</label>
+                    <label for="currency">De Moneda</label>
                     <select name="currencyFrom" id="currencyFrom">
                         <option value="ars">ARS - Peso argentino</option>
                         <option value="brl">BRL - Real brasileño</option>
@@ -63,7 +62,7 @@
                     </select>
                 </form>
                 <form class="conversorBox__currency" action="#">
-                    <label for="currency">To Currency</label>
+                    <label for="currency">A Moneda</label>
                     <select name="currencyTo" id="currencyTo">
                         <option value="ars">ARS - Peso argentino</option>
                         <option value="brl">BRL - Real brasileño</option>
@@ -78,7 +77,7 @@
                         <option value="mxn">MXN - Peso mexicano</option>
                         <option value="pen">PEN - Sol perú</option>
                         <option value="rub">RUB - Rublo ruso</option>
-                        <option value="usd">USD - Dólar estadounidense</option>   
+                        <option selected value="usd">USD - Dólar estadounidense</option>   
                         <option value="uyu">UYU - Peso uruguayo</option>   
                         <option value="ves">VES - Bolívar venezolano</option>                  
                     </select>
@@ -98,89 +97,89 @@
                 </div>
                 <table class="cotizaciones__table">
                     <tr>
-                        <th>Code</th>
-                        <th>Country</th>
-                        <th>value</th>
+                        <th>Código</th>
+                        <th>País</th>
+                        <th>Valor</th>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_argentina.png" alt="Argentina flag">ARS</td>
                         <td>Peso argentino</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_brazil.png" alt="Brazil flag">BRL</td>
                         <td>Real brasileño</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_canada.png" alt="Canada flag">CAD</td>
                         <td>Dólar canadiense</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_switzerland.png" alt="Switzerland flag">CHF</td>
                         <td>Franco suizo</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_chile.png" alt="Chile flag">CLP</td>
                         <td>Peso chileno</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_china.png" alt="China flag">CNY</td>
                         <td>Yuan chino</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_colombia.png" alt="Colombia flag">COP</td>
                         <td>Peso colombiano</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_euro.png" alt="European Union flag">EUR</td>
                         <td>Euro</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_united-kingdom.png" alt="United Kingdom flag">GBP</td>
                         <td>Libra esterlina</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_japan.png" alt="Japan flag">JPY</td>
                         <td>Yen japonés</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_mexico.png" alt="Mexico flag">MXN</td>
                         <td>Peso mexicano</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_peru.png" alt="Perú flag">PEN</td>
                         <td>Sol perú</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_rusia.png" alt="Rusia flag">RUB</td>
                         <td>Rublo ruso</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_united-states.png" alt="United States flag">USD</td>
                         <td>Dólar estadounidense</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_uruguay.png" alt="Uruguay flag">UYU</td>
                         <td>Peso uruguayo</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                     <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_venezuela.png" alt="Venezuela flag">VES</td>
                         <td>Bolívar venezolano</td>
-                        <td>1.00</td>
+                        <td class="currencyRate">1.00</td>
                     </tr>
                 </thead>
                 </table>
