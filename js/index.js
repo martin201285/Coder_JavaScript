@@ -1,75 +1,246 @@
-// function conversor() {
+// OBJECT: CURRENCIES (rate reference from: https://www.aduanaargentina.com/conversor-de-monedas/)
 
-//     const valor = parseInt(prompt("1) Ingrese un valor en pesos (ARS)."));
-//     const moneda = prompt("2) Seleccione: USD para dólar, EUR para euro, GBP para libra, BRL para real.").toLowerCase();
-
-//     // Cotizaciones
-//     const cotizacionUsd = 165.31; // Dólar
-//     const cotizacionEur = 176.50; // Euro
-//     const cotizacionGbp = 199.87; // Libra esterlina
-//     const cotizacionBrl = 6.54; // Real
-
-//     let resultado = 0;
-
-//     if ((valor > 0) && (moneda === "usd")) {
-//         resultado = valor * cotizacionUsd;
-//         alert("El valor es ARS " + resultado + " a cotización oficial de " + cotizacionUsd);
-//         } else if ((valor > 0) && (moneda === "eur")) {
-//         resultado = valor * cotizacionEur;
-//         alert("El valor es ARS " + resultado + " a cotización oficial de " + cotizacionEur);
-//         } else if ((valor > 0) && (moneda === "gbp")) {
-//         resultado = valor * cotizacionGbp;
-//         alert("El valor es ARS " + resultado + " a cotización oficial de " + cotizacionGbp);
-//         } else if ((valor > 0) && (moneda === "brl")) {
-//         resultado = valor * cotizacionBrl;
-//         alert("El valor es ARS " + resultado + " a cotización oficial de " + cotizacionBrl);
-//         } else {
-//         alert("Por favor, ingrese un valor válido.");
-        
-//     }
-// }
-
-
-// CURRENCY RATES
-
-const currencyRates = [
-    { name: "ARS - Peso argentino", code: "ARS", country: "Peso argentino", rate: 1.00 },
-    { name: "BRL - Real brasileño", code: "BRL", country: "Real brasileño",rate: 2.00 },
-    { name: "CAD - Dólar canadiense", code: "CAD", country: "Dólar canadiense",rate: 3.00 },
-    { name: "CHF - Franco suizo", code: "CHF", country: "Franco suizo",rate: 4.00 },
-    { name: "CLP - Peso chileno", code: "CLP", country: "Peso chileno",rate: 5.00 },
-    { name: "CNY - Yuan chino", code: "CNY", country: "Yuan chinoo",rate: 6.00 },
-    { name: "COP - Peso colombiano", code: "COP", country: "Peso colombiano",rate: 7.00 },
-    { name: "EUR - Euro", code: "EUR", country: "Euro",rate: 8.00 },
-    { name: "GBP - Libra esterlina", code: "GBP", country: "Libra esterlina",rate: 9.00 },
-    { name: "JPY - Yen japonés", code: "JPY", country: "Yen japonés",rate: 10.00 },
-    { name: "MXN - Peso mexicano", code: "MXN", country: "Peso mexicano",rate: 11.00 },
-    { name: "PEN - Sol perú", code: "PEN", country: "Sol perú",rate: 12.00 },
-    { name: "RUB - Rublo ruso", code: "RUB", country: "Rublo ruso",rate: 13.00 },
-    { name: "USD - Dólar estadounidense", code: "USD", country: "Dólar estadounidense",rate: 14.00 },
-    { name: "UYU - Peso uruguayo", code: "UYU", country: "Peso uruguayo",rate: 15.00 },
-    { name: "VES - Bolívar venezolano", code: "VES", country: "Bolívar venezolano",rate: 16.00 },
+const currencies = [
+    { code: "ARS", name: "ARS - Peso argentino", description: "Peso argentino", rate: 1.000000 },
+    { code: "BRL", name: "BRL - Real brasileño", description: "Real brasileño", rate: 0.030879 },
+    { code: "CAD", name: "CAD - Dólar canadiense", description: "Dólar canadiense", rate: 0.008076 },
+    { code: "CHF", name: "CHF - Franco suizo", description: "Franco suizo", rate: 0.005558 },
+    { code: "CLP", name: "CLP - Peso chileno", description: "Peso chileno", rate: 5.203710 },
+    { code: "CNY", name: "CNY - Yuan chino", description: "Yuan chino", rate: 0.041151 },
+    { code: "COP", name: "COP - Peso colombiano", description: "Peso colombiano", rate: 28.592900 },
+    { code: "EUR", name: "EUR - Euro", description: "Euro", rate: 0.005620 },
+    { code: "GBP", name: "GBP - Libra esterlina", description: "Libra esterlina", rate: 0.004846 },
+    { code: "JPY", name: "JPY - Yen japonés", description: "Yen japonés", rate: 0.811129 },
+    { code: "MXN", name: "MXN - Peso mexicano", description: "Peso mexicano", rate: 0.116769 },
+    { code: "PEN", name: "PEN - Sol perú", description: "Sol perú", rate: 0.022839 },
+    { code: "RUB", name: "RUB - Rublo ruso", description: "Rublo ruso", rate: 0.374138 },
+    { code: "USD", name: "USD - Dólar estadounidense", description: "Dólar estadounidense", rate: 0.005901 },
+    { code: "UYU", name: "UYU - Peso uruguayo", description: "Peso uruguayo", rate: 0.232026 },
+    { code: "VES", name: "VES - Bolívar venezolano", description: "Bolívar venezolano", rate: 0.068435 },
 ]
 
-for (const currency of currencyRates) {
-    console.log(currency.country);
+// RECORRER OBJETO Y TRAER ELEMENTO NAME
+
+let entradas = Object.entries(currencies);
+// console.log(entradas);
+
+let recorrer = entradas.map(function (elemento) {
+    const codeValues = elemento[1].name;
+    // console.log(codeValues);
+});
+
+// CONVERSOR FUNCTION
+
+function userInputs() {
+    // Capture user inputs: Amount, Currency From & Currency To
+    let amount = parseInt(document.getElementById("input").value);
+    const selectedValueFrom = document.getElementById("currencyFrom").value;
+    const selectedValueTo = document.getElementById("currencyTo").value;
+
+    // VARS
+    let currencyFrom = "";
+    let currencyTo = "";
+    let rateTo = 0;
+    let outputValue = 0;
+
+    // Capture selected value for convert to currency code: from
+    if (selectedValueFrom === "ARS - Peso argentino") {
+        currencyFrom = "ARS";
+    } else if (selectedValueFrom === "BRL - Real brasileño") {
+        currencyFrom = "BRL";
+    } else if (selectedValueFrom === "CAD - Dólar canadiense") {
+        currencyFrom = "CAD";
+    } else if (selectedValueFrom === "CHF - Franco suizo") {
+        currencyFrom = "CHF";
+    } else if (selectedValueFrom === "CLP - Peso chileno") {
+        currencyFrom = "CLP";
+    } else if (selectedValueFrom === "CNY - Yuan chino") {
+        currencyFrom = "CNY";
+    } else if (selectedValueFrom === "COP - Peso colombiano") {
+        currencyFrom = "COP";
+    } else if (selectedValueFrom === "EUR - Euro") {
+        currencyFrom = "EUR";
+    } else if (selectedValueFrom === "GBP - Libra esterlina") {
+        currencyFrom = "GBP";
+    } else if (selectedValueFrom === "JPY - Yen japonés") {
+        currencyFrom = "JPY";
+    } else if (selectedValueFrom === "MXN - Peso mexicano") {
+        currencyFrom = "MXN";
+    } else if (selectedValueFrom === "PEN - Sol perú") {
+        currencyFrom = "PEN";
+    } else if (selectedValueFrom === "RUB - Rublo ruso") {
+        currencyFrom = "RUB";
+    } else if (selectedValueFrom === "USD - Dólar estadounidense") {
+        currencyFrom = "USD";
+    } else if (selectedValueFrom === "UYU - Peso uruguayo") {
+        currencyFrom = "UYU";
+    } else if (selectedValueFrom === "VES - Bolívar venezolano") {
+        currencyFrom = "VES";
+    }
+
+    // Capture selected value for convert to currency code: to, & convert
+    if (selectedValueTo === "ARS - Peso argentino") {
+        currencyTo = "ARS";
+        rateTo = 1.000000;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "BRL - Real brasileño") {
+        currencyTo = "BRL";
+        rateTo = 0.008076;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "CAD - Dólar canadiense") {
+        currencyTo = "CAD";
+        rateTo = 0.008076;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "CHF - Franco suizo") {
+        currencyTo = "CHF";
+        rateTo = 0.005558;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "CLP - Peso chileno") {
+        currencyTo = "CLP";
+        rateTo = 5.203710;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "CNY - Yuan chino") {
+        currencyTo = "CNY";
+        rateTo = 0.041151;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "COP - Peso colombiano") {
+        currencyTo = "COP";
+        rateTo = 28.592900;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "EUR - Euro") {
+        currencyTo = "EUR";
+        rateTo = 0.005620;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "GBP - Libra esterlina") {
+        currencyTo = "GBP";
+        rateTo = 0.004846;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "JPY - Yen japonés") {
+        currencyTo = "JPY";
+        rateTo = 0.811129;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "MXN - Peso mexicano") {
+        currencyTo = "MXN";
+        rateTo = 0.116769;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "PEN - Sol perú") {
+        currencyTo = "PEN";
+        rateTo = 0.022839;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "RUB - Rublo ruso") {
+        currencyTo = "RUB";
+        rateTo = 0.374138;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "USD - Dólar estadounidense") {
+        currencyTo = "USD";
+        rateTo = 0.005901;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "UYU - Peso uruguayo") {
+        currencyTo = "UYU";
+        rateTo = 0.232026;
+        outputValue = amount * rateTo;
+    } else if (selectedValueTo === "VES - Bolívar venezolano") {
+        currencyTo = "VES";
+        rateTo = 0.068435;
+        outputValue = amount * rateTo;
+    }
+
+    // Put inputs values in HTML: <p> tag (id "rate")
+    let pR = document.getElementById("rate");
+    pR.innerText = "1 " + `${currencyFrom}` + " = " + `${rateTo}` + " " + `${currencyTo}`;
+
+    // Put inputs values in HTML: <p> tag (id "output")
+    let pO = document.getElementById("output");
+    pO.innerText = currencyTo + " " + outputValue.toFixed(2);
+
+    // for test:
+    console.log("Amount: " + amount);
+    console.log("From Currency: " + selectedValueFrom);
+    console.log("To Currency: " + selectedValueTo);
+    console.log("Output Value: " + currencyTo + " " + outputValue.toFixed(2));
 }
 
-// CAPTURE AUMONT FROM HTML
+// DINAMIC LIST FOR CURRENCY SELECTION
 
-const aumont = document.getElementById("input");
+// Capture Currencies: From & To Tags
 
-// CAPTURE CURRENCY FROM HTML
+const currencyFromTag = document.getElementById("currencyFrom");
+const currencyToTag = document.getElementById("currencyTo");
 
-const currencyOne = document.getElementById("currencyFrom");
-const currencyTwo = document.getElementById("currencyTo");
+// From Currency Option List
+// (Por el momento la deshabilité para que solo sea de pesos argentinos hacia otras monedas. No sé por el momento como hacer la conversión en ambos sentidos para distintas monedas)
 
-// RESET BUTTON
+// currencies.forEach(currency => {
+//     let option = document.createElement("option");
+//     option.innerHTML = `<option>${currency.name}</option>`;
 
-function ClearAumont () {
+//     // Add to list
+//     currencyFromTag.append(option);
+// })
+
+
+// To Currency Option List
+
+currencies.forEach(currency => {
+    let option = document.createElement("option");
+    option.innerHTML = `<option>${currency.name}</option>`;
+
+    // Add to list
+    currencyToTag.append(option);
+})
+
+
+// RESET BUTTON ON INPUT FIELD
+
+function ClearAmount () {
     document.getElementById("input").value = "";
+    let p = document.getElementById("output");
+    p.innerText = "0.00";
 }
 
 
 
+// CONVERSOR TEST BUTTON AND FUNCTION W/PROMPTS AND ALERTS (FIRST CONVERSOR)
+
+function conversor() {
+
+    const value = parseInt(prompt("1) Ingrese un valor en pesos (ARS)."));
+    const moneda = prompt("2) Seleccione: USD para dólar, EUR para euro, GBP para libra, BRL para real.").toLowerCase();
+
+    // Cotizaciones
+    const cotizacionUsd = 165.31; // Dólar
+    const cotizacionEur = 176.50; // Euro
+    const cotizacionGbp = 199.87; // Libra esterlina
+    const cotizacionBrl = 6.54; // Real
+
+    let result = 0;
+
+    if ((value > 0) && (moneda === "usd")) {
+        result = value * cotizacionUsd;
+        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionUsd);
+        } else if ((value > 0) && (moneda === "eur")) {
+        result = value * cotizacionEur;
+        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionEur);
+        } else if ((value > 0) && (moneda === "gbp")) {
+        result = value * cotizacionGbp;
+        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionGbp);
+        } else if ((value > 0) && (moneda === "brl")) {
+        result = value * cotizacionBrl;
+        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionBrl);
+        } else {
+        alert("Por favor, ingrese un valor válido.");
+        
+    }
+}
+
+// // FUNCTION: CURRENCY CONSTRUCTOR
+
+// class Currency {
+//     constructor(code, name, description, rate) {
+//         this.code = code;
+//         this.name = name;
+//         this.description = description;
+//         this.rate = rate;
+//     }
+// }
 
