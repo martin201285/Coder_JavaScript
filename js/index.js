@@ -154,10 +154,10 @@ function userInputs() {
     pO.innerText = currencyTo + " " + outputValue.toFixed(2);
 
     // for test:
-    console.log("Amount: " + amount);
-    console.log("From Currency: " + selectedValueFrom);
-    console.log("To Currency: " + selectedValueTo);
-    console.log("Output Value: " + currencyTo + " " + outputValue.toFixed(2));
+    // console.log("Amount: " + amount);
+    // console.log("From Currency: " + selectedValueFrom);
+    // console.log("To Currency: " + selectedValueTo);
+    // console.log("Output Value: " + currencyTo + " " + outputValue.toFixed(2));
 }
 
 // DINAMIC LIST FOR CURRENCY SELECTION
@@ -199,7 +199,6 @@ function ClearAmount () {
 }
 
 
-
 // CONVERSOR TEST BUTTON AND FUNCTION W/PROMPTS AND ALERTS (FIRST CONVERSOR)
 
 function conversor() {
@@ -233,7 +232,7 @@ function conversor() {
     }
 }
 
-// // FUNCTION: CURRENCY CONSTRUCTOR
+// CONSTRUCTOR: CURRENCY (Sin uso para esta entrega)
 
 // class Currency {
 //     constructor(code, name, description, rate) {
