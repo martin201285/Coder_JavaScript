@@ -235,11 +235,11 @@ function conversor() {
 // CONSTRUCTOR: CURRENCY (Sin uso para esta entrega)
 
 // class Currency {
-//     constructor(code, name, description, rate) {
-//         this.code = code;
-//         this.name = name;
-//         this.description = description;
-//         this.rate = rate;
+//     constructor(info) {
+//         this.code = info.code;
+//         this.name = info.name;
+//         this.description = info.description;
+//         this.rate = info.rate;
 //     }
 // }
 
