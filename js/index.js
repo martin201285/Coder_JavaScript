@@ -1,22 +1,22 @@
 // OBJECT: CURRENCIES (rate reference from: https://www.aduanaargentina.com/conversor-de-monedas/)
 
 const currencies = [
-    { code: "ARS", name: "ARS - Peso argentino", description: "Peso argentino", rate: 1.000000 },
-    { code: "BRL", name: "BRL - Real brasileño", description: "Real brasileño", rate: 0.030879 },
-    { code: "CAD", name: "CAD - Dólar canadiense", description: "Dólar canadiense", rate: 0.008076 },
-    { code: "CHF", name: "CHF - Franco suizo", description: "Franco suizo", rate: 0.005558 },
-    { code: "CLP", name: "CLP - Peso chileno", description: "Peso chileno", rate: 5.203710 },
-    { code: "CNY", name: "CNY - Yuan chino", description: "Yuan chino", rate: 0.041151 },
-    { code: "COP", name: "COP - Peso colombiano", description: "Peso colombiano", rate: 28.592900 },
-    { code: "EUR", name: "EUR - Euro", description: "Euro", rate: 0.005620 },
-    { code: "GBP", name: "GBP - Libra esterlina", description: "Libra esterlina", rate: 0.004846 },
-    { code: "JPY", name: "JPY - Yen japonés", description: "Yen japonés", rate: 0.811129 },
-    { code: "MXN", name: "MXN - Peso mexicano", description: "Peso mexicano", rate: 0.116769 },
-    { code: "PEN", name: "PEN - Sol perú", description: "Sol perú", rate: 0.022839 },
-    { code: "RUB", name: "RUB - Rublo ruso", description: "Rublo ruso", rate: 0.374138 },
-    { code: "USD", name: "USD - Dólar estadounidense", description: "Dólar estadounidense", rate: 0.005901 },
-    { code: "UYU", name: "UYU - Peso uruguayo", description: "Peso uruguayo", rate: 0.232026 },
-    { code: "VES", name: "VES - Bolívar venezolano", description: "Bolívar venezolano", rate: 0.068435 },
+    { code: "ARS", name: "ARS - Peso argentino", description: "Peso argentino", rate: 1.000000, img: "./img/icon_argentina.png" },
+    { code: "BRL", name: "BRL - Real brasileño", description: "Real brasileño", rate: 0.030879, img: "./img/icon_brazil.png" },
+    { code: "CAD", name: "CAD - Dólar canadiense", description: "Dólar canadiense", rate: 0.008076, img: "./img/icon_canada.png" },
+    { code: "CHF", name: "CHF - Franco suizo", description: "Franco suizo", rate: 0.005558, img: "./img/icon_switzerland.png" },
+    { code: "CLP", name: "CLP - Peso chileno", description: "Peso chileno", rate: 5.203710, img: "./img/icon_chile.png" },
+    { code: "CNY", name: "CNY - Yuan chino", description: "Yuan chino", rate: 0.041151, img: "./img/icon_china.png" },
+    { code: "COP", name: "COP - Peso colombiano", description: "Peso colombiano", rate: 28.592900, img: "./img/icon_colombia.png" },
+    { code: "EUR", name: "EUR - Euro", description: "Euro", rate: 0.005620, img: "./img/icon_euro.png" },
+    { code: "GBP", name: "GBP - Libra esterlina", description: "Libra esterlina", rate: 0.004846, img: "./img/icon_united-kingdom.png" },
+    { code: "JPY", name: "JPY - Yen japonés", description: "Yen japonés", rate: 0.811129, img: "./img/icon_japan.png" },
+    { code: "MXN", name: "MXN - Peso mexicano", description: "Peso mexicano", rate: 0.116769, img: "./img/icon_mexico.png" },
+    { code: "PEN", name: "PEN - Sol perú", description: "Sol perú", rate: 0.022839, img: "./img/icon_peru.png" },
+    { code: "RUB", name: "RUB - Rublo ruso", description: "Rublo ruso", rate: 0.374138, img: "./img/icon_rusia.png" },
+    { code: "USD", name: "USD - Dólar estadounidense", description: "Dólar estadounidense", rate: 0.005901, img: "./img/icon_united-states.png" },
+    { code: "UYU", name: "UYU - Peso uruguayo", description: "Peso uruguayo", rate: 0.232026, img: "./img/icon_uruguay.png" },
+    { code: "VES", name: "VES - Bolívar venezolano", description: "Bolívar venezolano", rate: 0.068435, img: "./img/icon_venezuela.png" },
 ]
 
 // RECORRER OBJETO Y TRAER ELEMENTO NAME
@@ -189,50 +189,33 @@ currencies.forEach(currency => {
     currencyToTag.append(option);
 })
 
+// DINAMIC ROWS FOR RATES TABLE
+
+const addRows = document.getElementById("cotizaciones__table");
+
+currencies.forEach(currency => {
+    let row = document.createElement("tr");
+    
+    row.innerHTML =
+    `<td class="tableFlag"><img class="countryFlag" src="${currency.img}">${currency.code}</td>
+    <td>${currency.description}</td>
+    <td class="currencyRate">${currency.rate}</td>`;
+
+    addRows.append(row);
+});
 
 // RESET BUTTON ON INPUT FIELD
 
-function ClearAmount () {
+function clearAmount() {
     document.getElementById("input").value = "";
     let p = document.getElementById("output");
     p.innerText = "0.00";
 }
 
+let clearButton = document.getElementById("button");
+clearButton.addEventListener("click", clearAmount);
 
-// CONVERSOR TEST BUTTON AND FUNCTION W/PROMPTS AND ALERTS (FIRST CONVERSOR)
-
-function conversor() {
-
-    const value = parseInt(prompt("1) Ingrese un valor en pesos (ARS)."));
-    const moneda = prompt("2) Seleccione: USD para dólar, EUR para euro, GBP para libra, BRL para real.").toLowerCase();
-
-    // Cotizaciones
-    const cotizacionUsd = 165.31; // Dólar
-    const cotizacionEur = 176.50; // Euro
-    const cotizacionGbp = 199.87; // Libra esterlina
-    const cotizacionBrl = 6.54; // Real
-
-    let result = 0;
-
-    if ((value > 0) && (moneda === "usd")) {
-        result = value * cotizacionUsd;
-        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionUsd);
-        } else if ((value > 0) && (moneda === "eur")) {
-        result = value * cotizacionEur;
-        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionEur);
-        } else if ((value > 0) && (moneda === "gbp")) {
-        result = value * cotizacionGbp;
-        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionGbp);
-        } else if ((value > 0) && (moneda === "brl")) {
-        result = value * cotizacionBrl;
-        alert("El valor es ARS " + result + " a cotización oficial de " + cotizacionBrl);
-        } else {
-        alert("Por favor, ingrese un valor válido.");
-        
-    }
-}
-
-// CONSTRUCTOR: CURRENCY (Sin uso para esta entrega)
+// // CONSTRUCTOR: CURRENCY
 
 // class Currency {
 //     constructor(info) {
@@ -242,4 +225,3 @@ function conversor() {
 //         this.rate = info.rate;
 //     }
 // }
-

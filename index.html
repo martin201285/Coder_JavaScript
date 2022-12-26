@@ -41,7 +41,7 @@
                 <form class="conversorBox__input">
                     <label for="input">Amount</label>
                     <input type="number" min="0.00" max="100000000.00" step="0.01" placeholder="0" value="0" aria-label="Cantidad a convertir" id="input" class="input" onkeyup="userInputs(this.value)">
-                    <button type="button" class="button" id="button" aria-label="Clear amount" onclick="ClearAmount()">x</button>
+                    <button type="button" class="button" id="button" aria-label="Clear amount">x</button>
                 </form>
                 <form class="conversorBox__currency" action="#">
                     <label for="currency">From Currency</label>
@@ -71,13 +71,13 @@
                 <div class="cotizaciones__title">
                     <h2>Rates</h2>
                 </div>
-                <table class="cotizaciones__table">
+                <table class="cotizaciones__table" id="cotizaciones__table">
                     <tr>
                         <th>Code</th>
                         <th>Country</th>
                         <th>Rate</th>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_argentina.png" alt="Argentina flag">ARS</td>
                         <td>Peso argentino</td>
                         <td class="currencyRate">1.000</td>
@@ -156,11 +156,12 @@
                         <td class="tableFlag"><img class="countryFlag" src="./img/icon_venezuela.png" alt="Venezuela flag">VES</td>
                         <td>Bolívar venezolano</td>
                         <td class="currencyRate">0.068</td>
-                    </tr>
+                    </tr> -->
                 </thead>
                 </table>
             </div>
         </section>
+        <section id="test"></section>
     </main>
     <footer>
         <p>Copyright © 2022 | All Rights Reserved</p>
