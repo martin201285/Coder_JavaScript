@@ -1,23 +1,33 @@
 // OBJECT: CURRENCIES (rate reference from: https://www.aduanaargentina.com/conversor-de-monedas/)
 
 const currencies = [
-    { code: "ARS", name: "ARS - Peso argentino", description: "Peso argentino", rate: 1.000000, img: "./img/icon_argentina.png" },
-    { code: "BRL", name: "BRL - Real brasileño", description: "Real brasileño", rate: 0.030879, img: "./img/icon_brazil.png" },
-    { code: "CAD", name: "CAD - Dólar canadiense", description: "Dólar canadiense", rate: 0.008076, img: "./img/icon_canada.png" },
-    { code: "CHF", name: "CHF - Franco suizo", description: "Franco suizo", rate: 0.005558, img: "./img/icon_switzerland.png" },
-    { code: "CLP", name: "CLP - Peso chileno", description: "Peso chileno", rate: 5.203710, img: "./img/icon_chile.png" },
-    { code: "CNY", name: "CNY - Yuan chino", description: "Yuan chino", rate: 0.041151, img: "./img/icon_china.png" },
-    { code: "COP", name: "COP - Peso colombiano", description: "Peso colombiano", rate: 28.592900, img: "./img/icon_colombia.png" },
-    { code: "EUR", name: "EUR - Euro", description: "Euro", rate: 0.005620, img: "./img/icon_euro.png" },
-    { code: "GBP", name: "GBP - Libra esterlina", description: "Libra esterlina", rate: 0.004846, img: "./img/icon_united-kingdom.png" },
-    { code: "JPY", name: "JPY - Yen japonés", description: "Yen japonés", rate: 0.811129, img: "./img/icon_japan.png" },
-    { code: "MXN", name: "MXN - Peso mexicano", description: "Peso mexicano", rate: 0.116769, img: "./img/icon_mexico.png" },
-    { code: "PEN", name: "PEN - Sol perú", description: "Sol perú", rate: 0.022839, img: "./img/icon_peru.png" },
-    { code: "RUB", name: "RUB - Rublo ruso", description: "Rublo ruso", rate: 0.374138, img: "./img/icon_rusia.png" },
-    { code: "USD", name: "USD - Dólar estadounidense", description: "Dólar estadounidense", rate: 0.005901, img: "./img/icon_united-states.png" },
-    { code: "UYU", name: "UYU - Peso uruguayo", description: "Peso uruguayo", rate: 0.232026, img: "./img/icon_uruguay.png" },
-    { code: "VES", name: "VES - Bolívar venezolano", description: "Bolívar venezolano", rate: 0.068435, img: "./img/icon_venezuela.png" },
+    { code: "ARS", name: "ARS - Peso argentino", description: "Peso argentino", rate: 1.000000, img: "./img/icon_argentina.png", alt: "Image of Argentina Flag" },
+    { code: "BRL", name: "BRL - Real brasileño", description: "Real brasileño", rate: 0.030879, img: "./img/icon_brazil.png", alt: "Image of Brazil Flag" },
+    { code: "CAD", name: "CAD - Dólar canadiense", description: "Dólar canadiense", rate: 0.008076, img: "./img/icon_canada.png", alt: "Image of Canada Flag" },
+    { code: "CHF", name: "CHF - Franco suizo", description: "Franco suizo", rate: 0.005558, img: "./img/icon_switzerland.png", alt: "Image of Switzerland Flag" },
+    { code: "CLP", name: "CLP - Peso chileno", description: "Peso chileno", rate: 5.203710, img: "./img/icon_chile.png", alt: "Image of Chile Flag" },
+    { code: "CNY", name: "CNY - Yuan chino", description: "Yuan chino", rate: 0.041151, img: "./img/icon_china.png", alt: "Image of China Flag" },
+    { code: "COP", name: "COP - Peso colombiano", description: "Peso colombiano", rate: 28.592900, img: "./img/icon_colombia.png", alt: "Image of Colombia Flag" },
+    { code: "EUR", name: "EUR - Euro", description: "Euro", rate: 0.005620, img: "./img/icon_euro.png", alt: "Image of Euro Flag" },
+    { code: "GBP", name: "GBP - Libra esterlina", description: "Libra esterlina", rate: 0.004846, img: "./img/icon_united-kingdom.png", alt: "Image of United Kingdom Flag" },
+    { code: "JPY", name: "JPY - Yen japonés", description: "Yen japonés", rate: 0.811129, img: "./img/icon_japan.png", alt: "Image of Japan Flag" },
+    { code: "MXN", name: "MXN - Peso mexicano", description: "Peso mexicano", rate: 0.116769, img: "./img/icon_mexico.png", alt: "Image of Mexico Flag" },
+    { code: "PEN", name: "PEN - Sol perú", description: "Sol perú", rate: 0.022839, img: "./img/icon_peru.png", alt: "Image of Peru Flag" },
+    { code: "RUB", name: "RUB - Rublo ruso", description: "Rublo ruso", rate: 0.374138, img: "./img/icon_rusia.png", alt: "Image of Rusia Flag" },
+    { code: "USD", name: "USD - Dólar estadounidense", description: "Dólar estadounidense", rate: 0.005901, img: "./img/icon_united-states.png", alt: "Image of United States Flag" },
+    { code: "UYU", name: "UYU - Peso uruguayo", description: "Peso uruguayo", rate: 0.232026, img: "./img/icon_uruguay.png", alt: "Image of Uruguay Flag" },
+    { code: "VES", name: "VES - Bolívar venezolano", description: "Bolívar venezolano", rate: 0.068435, img: "./img/icon_venezuela.png", alt: "Image of Venezuela Flag" },
 ]
+
+// ADD CURRENCIES OBJECT TO LOCAL STORAGE
+
+const saveStorage = (clave, valor) => {
+    localStorage.setItem(clave, valor);
+};
+
+currencies.forEach(currency => {
+    saveStorage(currency.code, JSON.stringify(currency));
+});
 
 // RECORRER OBJETO Y TRAER ELEMENTO NAME
 
@@ -196,11 +206,13 @@ const addRows = document.getElementById("cotizaciones__table");
 currencies.forEach(currency => {
     let row = document.createElement("tr");
     
+    // HTML Code for rows
     row.innerHTML =
-    `<td class="tableFlag"><img class="countryFlag" src="${currency.img}">${currency.code}</td>
+    `<td class="tableFlag"><img class="countryFlag" src="${currency.img}" alt="${currency.alt}">${currency.code}</td>
     <td>${currency.description}</td>
     <td class="currencyRate">${currency.rate}</td>`;
 
+    // Add to table
     addRows.append(row);
 });
 
