@@ -21,17 +21,16 @@ const currencies = [
 
 // ADD CURRENCIES OBJECT TO LOCAL STORAGE
 
-const saveStorage = (clave, valor) => {
-    localStorage.setItem(clave, valor);
-};
+localStorage.setItem("currencies",JSON.stringify(currencies));
 
-currencies.forEach(currency => {
-    saveStorage(currency.code, JSON.stringify(currency));
-});
+// GET OBJECT CURRENCIES FROM LOCAL STORAGE
 
-// RECORRER OBJETO Y TRAER ELEMENTO NAME
+let recoverObjectFromStorage = JSON.parse(localStorage.getItem("currencies"));
+// console.log(recoverObjectFromStorage);
 
-let entradas = Object.entries(currencies);
+// MAP OBJECT AND GET "NAME" VALUE
+
+let entradas = Object.entries(recoverObjectFromStorage);
 // console.log(entradas);
 
 let recorrer = entradas.map(function (elemento) {
@@ -178,7 +177,7 @@ const currencyFromTag = document.getElementById("currencyFrom");
 const currencyToTag = document.getElementById("currencyTo");
 
 // From Currency Option List
-// (Por el momento la deshabilité para que solo sea de pesos argentinos hacia otras monedas. No sé por el momento como hacer la conversión en ambos sentidos para distintas monedas)
+// (Por el momento la deshabilité para que solo sea de pesos argentinos hacia otras monedas. No sé por el momento como hacer la conversión en ambos sentidos para distintas monedas. Estoy investigando con la documentación sobre como implementar APIs)
 
 // currencies.forEach(currency => {
 //     let option = document.createElement("option");
