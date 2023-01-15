@@ -223,8 +223,26 @@ function clearAmount() {
     p.innerText = "0.00";
 }
 
-let clearButton = document.getElementById("button");
+const clearButton = document.getElementById("button");
 clearButton.addEventListener("click", clearAmount);
+
+// SCROLL UP FUNCTION
+
+function scrollUp(pxScreen){
+    window.addEventListener('scroll', () => {
+        let scroll  = document.documentElement.scrollTop;
+        let upButton = document.getElementById('upButton');
+
+        if(scroll > pxScreen){
+            upButton.style.display = 'block';
+        } else {
+            upButton.style.display = 'none';
+        }
+    })
+}
+
+scrollUp(100);
+
 
 // // CONSTRUCTOR: CURRENCY
 
