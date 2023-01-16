@@ -68,6 +68,15 @@ li {
     transition: all 5s;
 }
 
+.oldConversor {
+    margin: var(--spacing-md) 0;
+    font-size: var(--font-md);
+}
+
+.swal2-popup {
+    font-size: var(--font-sm) !important;
+  }
+
 /* HEADER */
 
 header {
@@ -179,7 +188,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 12.8rem 0 var(--spacing-lg) 0;
+    padding: var(--spacing-lg) 0 var(--spacing-lg) 0;
 }
 
 .conversorBox {
