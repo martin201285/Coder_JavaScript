@@ -63,4 +63,4 @@ Simulator: Currency Conversor.
 <br />
 
 ## LIVE SERVER:
-:globe_with_meridians: [LINK](https://calendarexample.netlify.app/) :globe_with_meridians:
+:globe_with_meridians: [LINK](https://currency-conversor.netlify.app) :globe_with_meridians:
