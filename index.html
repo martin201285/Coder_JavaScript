@@ -40,18 +40,20 @@
                     <input type="number" min="0.00" max="100000000.00" step="0.01" placeholder="0" value="0" aria-label="Cantidad a convertir" id="input" class="input">
                     <button type="button" class="button" id="button" aria-label="Clear amount">x</button>
                 </form>
-                <form class="conversorBox__currency" action="#">
-                    <label for="currency">From Currency</label>
-                    <select name="currencyFrom" id="currencyFrom">
-                         <!-- Se inserta lista con archivo JS: ver DINAMIC LIST FOR CURRENCY SELECTION --> 
-                    </select>
-                </form>
-                <form class="conversorBox__currency" action="#">
-                    <label for="currency">To Currency</label>
-                    <select name="currencyTo" id="currencyTo">
-                        <!-- Se inserta lista con archivo JS: ver DINAMIC LIST FOR CURRENCY SELECTION -->         
-                    </select>
-                </form>
+                <div class="conversorBox__menu">
+                    <form class="conversorBox__currency" action="#">
+                        <label for="currency">From Currency</label>
+                        <select name="currencyFrom" id="currencyFrom">
+                            <!-- Se inserta lista con archivo JS: ver DINAMIC LIST FOR CURRENCY SELECTION --> 
+                        </select>
+                    </form>
+                    <form class="conversorBox__currency" action="#">
+                        <label for="currency">To Currency</label>
+                            <select name="currencyTo" id="currencyTo">
+                                <!-- Se inserta lista con archivo JS: ver DINAMIC LIST FOR CURRENCY SELECTION -->         
+                            </select>
+                    </form>
+                </div>
                 <div class="conversorBox__rate">
                     <!-- Se inserta lista con archivo JS: function calculate() -->  
                     <p id="rate"> 1 ARS = 1 ARS</p>

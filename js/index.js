@@ -38,6 +38,7 @@ let recorrer = entradas.map(function (elemento) {
     // console.log(codeValues);
 });
 
+
 // DINAMIC LIST FOR CURRENCY SELECTION
 
 // Capture Currencies: From & To Tags
@@ -55,7 +56,6 @@ currencies.forEach(currency => {
     currencyFromTag.append(option);
 })
 
-
 // To Currency Option List
 
 currencies.forEach(currency => {
@@ -66,44 +66,45 @@ currencies.forEach(currency => {
     currencyToTag.append(option);
 })
 
+
 // CONVERSOR
 
-const monedaEl_one = document.getElementById("currencyFrom");
-const monedaEl_two = document.getElementById("currencyTo");
-const cantidadEl_one = document.getElementById("input");
-const tazaEl = document.getElementById("rate");
-const cantidadEl_two = document.getElementById("output");
+const currencyFrom = document.getElementById("currencyFrom");
+const currencyTo = document.getElementById("currencyTo");
+const inputValue = document.getElementById("input");
+const rateConvert = document.getElementById("rate");
+const outputValue = document.getElementById("output");
 
 // Fetch w/API
 function calculate(){
 
-    const monedaOne = monedaEl_one.value;
-    const monedaTwo = monedaEl_two.value;
+    const currencyOne = currencyFrom.value;
+    const currencyTwo = currencyTo.value;
 
-    console.log(monedaOne);
-    console.log(monedaTwo);
+    // console.log(monedaOne);
+    // console.log(monedaTwo);
 
-    fetch(`https://api.exchangerate-api.com/v4/latest/${monedaOne}`)
+    fetch(`https://api.exchangerate-api.com/v4/latest/${currencyOne}`)
     .then(res => res.json())
     .then(data => {
-        const taza = data.rates[monedaTwo];
-        console.log(taza);
+        const taza = data.rates[currencyTwo];
+        // console.log(taza);
 
         // Add rates values in HTML
-        tazaEl.innerText = `1 ${monedaOne} = ${taza} ${monedaTwo}`;
+        rateConvert.innerText = `1 ${currencyOne} = ${taza} ${currencyTwo}`;
 
         // Add output value in HTML
-        outputValue = (cantidadEl_one.value * taza).toFixed(2);
-        cantidadEl_two.innerHTML = `$ ${outputValue}`;
+        textValue = (inputValue.value * taza).toFixed(2);
+        outputValue.innerHTML = `${currencyTwo} ${textValue}`;
 
     });
 }
 
 // Events
-monedaEl_one.addEventListener('change', calculate);
-cantidadEl_one.addEventListener('input', calculate);
-monedaEl_two.addEventListener('change', calculate);
-cantidadEl_two.addEventListener('input', calculate);
+currencyFrom.addEventListener('change', calculate);
+inputValue.addEventListener('input', calculate);
+currencyTo.addEventListener('change', calculate);
+outputValue.addEventListener('input', calculate);
 
 
 // DINAMIC ROWS FOR RATES TABLE
@@ -123,6 +124,7 @@ currencies.forEach(currency => {
     addRows.append(row);
 });
 
+
 // RESET BUTTON ON INPUT FIELD
 
 function clearAmount() {
@@ -133,6 +135,7 @@ function clearAmount() {
 
 const clearButton = document.getElementById("button");
 clearButton.addEventListener("click", clearAmount);
+
 
 // SCROLL UP FUNCTION
 
@@ -150,6 +153,7 @@ function scrollUp(pxScreen){
 }
 
 scrollUp(100);
+
 
 // SWEETALERT ON OLD CONVERSOR BUTTON
 

@@ -94,7 +94,7 @@ header {
 h1 {
     font-size:var(--font-lg);
     text-transform: uppercase;
-    color: white;
+    color: rgb(231, 182, 59);
     padding: 1rem 0 1rem 0;
     cursor: default;
 }
@@ -234,14 +234,32 @@ main {
     font-size: var(--font-md);
 }
 
+.conversorBox__menu {
+    display: flex;
+    gap: 4rem;
+}
+
 .conversorBox__currency {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-select, input {
-    width: 28rem;
+.currencyBox {
+    padding: 0 .2rem;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+input {
+    width: 24rem;
+    font-size: var(--font-md);
+    border-radius: .5rem;
+}
+
+select {
+    width: 10rem;
     font-size: var(--font-md);
     border-radius: .5rem;
 }
@@ -349,5 +367,35 @@ footer p {
 
 .spanFooter {
     font-weight: bold;
+}
+
+/* MEDIAS */
+
+@media screen and (max-width: 768px) { 
+    
+    header {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .menu {
+        gap: 0;
+    }
+
+    .menu__items {
+        gap: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 600px) { 
+    
+    h1 {
+        font-size: var(--font-md);
+    }
+
+    .menu a {
+        font-size: var(--font-xs);
+    }
+
 }
 
